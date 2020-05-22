@@ -407,6 +407,18 @@
                     "quarters": "",
                     "defense": "",
                     "driftEngine": "",
+                    "high": {
+                        "value": [],
+                        "custom": ""
+                    },
+                    "mid": {
+                        "value": [],
+                        "custom": ""
+                    },
+                    "low": {
+                        "value": [],
+                        "custom": ""
+                    },
                     "bays": {
                         "value": [],
                         "custom": ""
@@ -476,7 +488,26 @@
                     "max": 1,
                     "value": 0
                 },
-                "expansionBays": 0,
+                "highSlots": {
+                    "min": 0,
+                    "max": 1,
+                    "value": 0
+                },
+                "midSlots": {
+                    "min": 0,
+                    "max": 1,
+                    "value": 0
+                },
+                "lowSlots": {
+                    "min": 0,
+                    "max": 1,
+                    "value": 0
+                },
+                "expansionBays": {
+                    "min": 0,
+                    "max": 1,
+                    "value": 0
+                },
                 "mounts": {
                     "forward": [],
                     "aft": [],
@@ -685,12 +716,15 @@
                 "min": 1
             },
             "kas": "",
-            "csk": [],
+            "csk": {},
             "skillRanks": {
                 "value": 4,
                 "min": 4
             },
-            "proficiencies": [],
+            "proficiencies": {
+                "weapon": {},
+                "armor": {}
+            },
             "bab": "bad",
             "fort": "bad",
             "ref": "good",

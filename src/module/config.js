@@ -110,13 +110,35 @@ STARFINDER.currencies = {
 // Damage Types
 STARFINDER.damageTypes = {
     "acid": "STARFINDER.DamageTypesAcid",
+    "acid+bludgeoning": "STARFINDER.DamageTypesAcidAndBludgeoning",
+    "acid+fire": "STARFINDER.DamageTypesAcidAndFire",
+    "acid+piercing": "STARFINDER.DamageTypesAcidAndPiercing",
+    "acid+slashing": "STARFINDER.DamageTypesAcidAndSlashing",
+    "acid|fire": "STARFINDER.DamageTypesAcidOrFire",
+    "acid|slashing": "STARFINDER.DamageTypesAcidOrSlashing",    
     "cold": "STARFINDER.DamageTypesCold",
+    "cold+piercing": "STARFINDER.DamageTypesColdAndPiercing",
+    "cold|fire": "STARFINDER.DamageTypesColdOrFire",
     "electricity": "STARFINDER.DamageTypesElectricity",
+    "electricity+fire": "STARFINDER.DamageTypesElectricityAndFire",
+    "electricity+piercing": "STARFINDER.DamageTypesElectricityAndPiercing",
+    "electricity+slashing": "STARFINDER.DamageTypesElectricityAndSlashing",
     "fire": "STARFINDER.DamageTypesFire",
+    "fire+piercing": "STARFINDER.DamageTypesFireAndPiercing",
+    "fire+slashing": "STARFINDER.DamageTypesFireAndSlashing",
+    "fire|slashing": "STARFINDER.DamageTypesFireOrSlashing",
+    "fire|sonic": "STARFINDER.DamageTypesFireOrSonic",
     "sonic": "STARFINDER.DamageTypesSonic",
     "bludgeoning": "STARFINDER.DamageTypesBludgeoning",
+    "bludgeoning+cold": "STARFINDER.DamageTypesBludgeoningAndCold",
+    "bludgeoning+electricity": "STARFINDER.DamageTypesBludgeoningAndElectricity",
+    "bludgeoning+fire": "STARFINDER.DamageTypesBludgeoningAndFire",
+    "bludgeoning+sonic": "STARFINDER.DamageTypesBludgeoningAndSonic",
     "piercing": "STARFINDER.DamageTypesPiercing",
-    "slashing": "STARFINDER.DamageTypesSlashing"
+    "piercing+sonic": "STARFINDER.DamageTypesPiercingAndSonic",
+    "slashing": "STARFINDER.DamageTypesSlashing",
+    "slashing+piercing": "STARFINDER.DamageTypesSlashingAndPiercing",
+    "slashing+sonic": "STARFINDER.DamageTypesSlashingAndSonic",
 };
 
 STARFINDER.distanceUnits = {
@@ -702,6 +724,27 @@ STARFINDER.shieldSystems = {
     "480": "Heavy Shields 480",
     "540": "Superior Shields 540",
     "600": "Superior Shields 600"
+};
+
+STARFINDER.highSlotSystems = {
+    "prblnch": "Probe Launcher",
+    "clk1": "Cloak Mk1",
+    "clk2": "Cloak Mk2",
+    "cvclk1": "Covops Cloak Mk1",
+    "cvclk2": "Covops Cloak Mk2",
+    "cvclk3": "Covops Cloak Mk3"
+};
+
+STARFINDER.midSlotSystems = {
+    "scram1": "Warp Scrambler Mk1",
+    "web1": "Stasis Webifier Mk1",
+    "shb1": "Shield Booster Mk1"
+};
+
+STARFINDER.lowSlotSystems = {
+    "arep1": "Armor Repairer Mk1",
+    "aplat1": "Armor Plates Mk1",
+    "sebo1": "Sensor Booster Mk1"
 };
 
 STARFINDER.expansionBaySystems = {

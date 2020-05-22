@@ -8,7 +8,7 @@ export class ActorSheetStarfinderStarship extends ActorSheetStarfinder {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["starfinder", "sheet", "actor", "starship"],
-            witdh: 600,
+            width: 1200,
             height: 800
         });
     }
@@ -39,6 +39,9 @@ export class ActorSheetStarfinderStarship extends ActorSheetStarfinder {
         
 
         const systemsMap = {
+			"high": CONFIG.STARFINDER.highSlotSystems,
+			"mid": CONFIG.STARFINDER.midSlotSystems,
+			"low": CONFIG.STARFINDER.lowSlotSystems,
             "bays": CONFIG.STARFINDER.expansionBaySystems,
             "security": CONFIG.STARFINDER.securitySystems
         };
@@ -193,19 +196,95 @@ export class ActorSheetStarfinderStarship extends ActorSheetStarfinder {
     async _onCrewDrop(event) {
         event.preventDefault();
 
-        $(event.target).css('background', '');
-
         let data;
         try {
             data = JSON.parse(event.dataTransfer.getData('text/plain'));
-            // Item's should have already been handled by the base class. 
-            // We only want to continue if there is an Actor being dropped
-            // on the sheet.
-            
-            if (data.type !== "Actor") return;
         } catch (err) {
             return false;
         }
+
+        if (!data) return false;
+
+        // Case 1 - Dropped Item
+        if (data.type === "Item")
+            return this._onDropItem(event, data);
+        
+        // Case 2 - Dropped Actor
+        if (data.type === "Actor")
+            return this._onCrewDrop(event, data);
+    }
+
+    /**
+     * Handle drop events for Items. 
+     * 
+     * @param {Event} event The originating click event
+     * @param {object} data The data transfer object
+     */
+    async _onDropItem(event, data) {
+        if (!this.actor.owner) return false;
+        let itemData = await this._getItemDropData(event, data);
+
+        if (itemData.type !== "starshipWeapon") {
+            let name = itemData.name;
+            ui.notifications.error(game.i18n.format("STARFINDER.InvalidStarshipItem", { name }));
+            return false;
+        }
+
+        return this.actor.createEmbeddedEntity("OwnedItem", itemData);
+    }
+
+    // TODO: Remove this once https://gitlab.com/foundrynet/foundryvtt/-/issues/2866
+    // has been implemented
+    /**
+     * Get an items data.
+     * 
+     * @param {Event} event The originating drag event
+     * @param {object} data The data trasfer object
+     */
+    async _getItemDropData(event, data) {
+        let itemData = null;
+
+        const actor = this.actor;
+        if (data.pack) {
+            const pack = game.packs.get(data.pack);
+            if (pack.metadata.entity !== "Item") return;
+            itemData = await pack.getEntity(data.id);
+        } else if (data.data) {
+            let sameActor = data.actorId === actor._id;
+            if (sameActor && actor.isToken) sameActor = data.tokenId === actor.token.id;
+            if (sameActor) return this._onSortItem(event, data.data);
+            itemData = data.data;
+        } else {
+            let item = game.items.get(data.id);
+            if (!item) return;
+            itemData = item.data;
+        }
+
+        return duplicate(itemData);
+    }
+
+    /**
+     * Handles drop events for the Crew list
+     * 
+     * @param {Event}  event The originating drop event
+     * @param {object} data  The data transfer object.
+     */
+    async _onCrewDrop(event, data) {
+        // event.preventDefault();
+
+        $(event.target).css('background', '');
+
+        // let data;
+        // try {
+        //     data = JSON.parse(event.dataTransfer.getData('text/plain'));
+        //     // Item's should have already been handled by the base class. 
+        //     // We only want to continue if there is an Actor being dropped
+        //     // on the sheet.
+            
+        //     if (data.type !== "Actor") return;
+        // } catch (err) {
+        //     return false;
+        // }
 
         if (!data.id) return false;
 
