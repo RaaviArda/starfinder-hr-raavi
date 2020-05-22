@@ -726,6 +726,27 @@ STARFINDER.shieldSystems = {
     "600": "Superior Shields 600"
 };
 
+STARFINDER.highSlotSystems = {
+    "prblnch": "Probe Launcher",
+    "clk1": "Cloak Mk1",
+    "clk2": "Cloak Mk2",
+    "cvclk1": "Covops Cloak Mk1",
+    "cvclk2": "Covops Cloak Mk2",
+    "cvclk3": "Covops Cloak Mk3"
+};
+
+STARFINDER.midSlotSystems = {
+    "scram1": "Warp Scrambler Mk1",
+    "web1": "Stasis Webifier Mk1",
+    "shb1": "Shield Booster Mk1"
+};
+
+STARFINDER.lowSlotSystems = {
+    "arep1": "Armor Repairer Mk1",
+    "aplat1": "Armor Plates Mk1",
+    "sebo1": "Sensor Booster Mk1"
+};
+
 STARFINDER.expansionBaySystems = {
     "arclab": "Arcane laboratory",
     "cargo": "Cargo hold",

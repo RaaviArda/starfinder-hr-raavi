@@ -8,7 +8,7 @@ export class ActorSheetStarfinderStarship extends ActorSheetStarfinder {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["starfinder", "sheet", "actor", "starship"],
-            witdh: 600,
+            width: 1200,
             height: 800
         });
     }
@@ -39,6 +39,9 @@ export class ActorSheetStarfinderStarship extends ActorSheetStarfinder {
         
 
         const systemsMap = {
+			"high": CONFIG.STARFINDER.highSlotSystems,
+			"mid": CONFIG.STARFINDER.midSlotSystems,
+			"low": CONFIG.STARFINDER.lowSlotSystems,
             "bays": CONFIG.STARFINDER.expansionBaySystems,
             "security": CONFIG.STARFINDER.securitySystems
         };
@@ -176,7 +179,7 @@ export class ActorSheetStarfinderStarship extends ActorSheetStarfinder {
         
         html.find('.crew-list').each((i, li) => {
             li.addEventListener("dragover", this._onCrewDragOver.bind(this), false);
-            // li.addEventListener("drop", this._onCrewDrop.bind(this), false);
+            li.addEventListener("drop", this._onCrewDrop.bind(this), false);
         });
 
         html.find('li.crew-header').each((i, li) => {
@@ -185,8 +188,12 @@ export class ActorSheetStarfinderStarship extends ActorSheetStarfinder {
         });
     }
 
-    /** @override */
-    async _onDrop(event) {
+    /**
+     * Handles drop events for the Crew list
+     * 
+     * @param {Event} event The originating drop event
+     */
+    async _onCrewDrop(event) {
         event.preventDefault();
 
         let data;
