@@ -762,7 +762,9 @@
                 "value": 1,
                 "min": 1
             },
-            "abilityMods": [],
+            "abilityMods": {
+                "parts": []
+            },
             "size": "med",
             "type": "humanoid",
             "subtype": ""

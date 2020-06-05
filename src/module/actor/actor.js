@@ -60,6 +60,24 @@ export class ActorStarfinder extends Actor {
     }
 
     /**
+     * Check to ensure that this actor has the modifiers flag set, if not then set it. 
+     * These will always be needed from hence forth, so we'll just make sure that they always exist.
+     * 
+     * @param {Object} flags The actor flags to check against.
+     */
+    _ensureHasModifiersFlag(flags) {
+        // if (!hasProperty(flags, "starfinder")) {
+        //     console.log(`Starfinder | ${this.name} does not have any starfinder flags, attempting to create them...`);
+        //     const updateData = duplicate(flags);
+        //     console.log(updateData);
+        //     this.update({'flags.starfinder': {}});
+        // }
+        // if (hasProperty(flags, 'starfinder') && !hasProperty(flags, "starfinder.modifiers")) {
+        //     // this.setFlag('starfinder', 'modifiers', []).then(entity => console.log(entity));
+        // }
+    }
+
+    /**
      * Calculate the ability modifer for each ability.
      * @param {Object} data The Actor's data
      */
@@ -244,10 +262,11 @@ export class ActorStarfinder extends Actor {
      * @return {Promise}        A Promise which resolves to the updated Entity
      */
     async update(data, options = {}) {
-        if (data['data.traits.size']) {
+        const newSize = data['data.traits.size'];
+        if (newSize && (newSize !== getProperty(this.data, "data.traits.size"))) {
             let size = CONFIG.STARFINDER.tokenSizes[data['data.traits.size']];
-            if (this.isToken) this.token.update(this.token.scene._id, { height: size, width: size });
-            else {
+            if (this.isToken) this.token.update({ height: size, width: size });
+            else if (!data["token.width"] && !hasProperty(data, "token.width")) {
                 setProperty(data, 'token.height', size);
                 setProperty(data, 'token.width', size);
             }
