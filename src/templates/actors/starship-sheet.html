@@ -46,11 +46,16 @@
                         <input name="data.attributes.hp.max" type="text" value="{{data.attributes.hp.max}}"
                             data-dtype="Number" placeholder="10" />
                     </div>
-                    <footer class="attribute-footer">
-                        <input name="data.attributes.hp.increment" type="text" placeholder="Increment"
-                            value="{{data.attributes.hp.increment}}" data-dtype="Number"
-                            title="This is the number of hull points that are added when the ship reaches tier 4 (and every 4 tiers after)" />
-                    </footer>
+                </li>
+                <li class="attribute">
+                    <h4 class="attribute-name box-title">Shields</h4>
+                    <div class="attribute-value multiple">
+                        <input name="data.attributes.shields.value" type="text" value="{{data.attributes.shields.value}}"
+                            data-dtype="Number" placeholder="10" />
+                        <span class="sep"> / </span>
+                        <input name="data.attributes.shields.max" type="text" value="{{data.attributes.shields.max}}"
+                            data-dtype="Number" placeholder="10" />
+                    </div>
                 </li>
                 <li class="attribute">
                     <h4 class="attribute-name box-title">Armor Class</h4>
@@ -77,7 +82,8 @@
                 <li class="attribute">
                     <h4 class="attribute-name box-title">{{ localize "STARFINDER.Speed" }}</h4>
                     <div class="attribute-value">
-                        <span>{{data.attributes.speed}}</span>
+                        <input type="text" name="data.attributes.speed" value="{{data.attributes.speed}}"
+                                data-dtype="Number" placeholder="6" />
                     </div>
                     <footer class="attribute-footer select">
                         <select name="data.attributes.maneuverability" title="Maneuverability">
@@ -123,7 +129,8 @@
                     <li class="attribute">
                         <h4 class="attribute-name box-title">Power Core</h4>
                         <div class="attribute-value">
-                            <span>{{data.attributes.pwr.pcu}}</span>
+                            <input type="text" name="data.attributes.pwr.pcu" value="{{data.attributes.pwr.pcu}}"
+                                data-dtype="Number" placeholder="0" />
                         </div>
                     </li>
                     <li class="attribute">
@@ -139,71 +146,56 @@
                         </div>
                     </li>
                     <li class="attribute">
-                        <h4 class="attribute-name box-title">Expansion Bays</h4>
+                        <h4 class="attribute-name box-title">Jump Range</h4>
                         <div class="attribute-value">
-                            <input type="text" name="data.attributes.expansionBays"
-                                value="{{data.attributes.expansionBays}}" data-dtype="Number"
-                                title="Max number of expansion bays allowed" />
-                        </div>
-                    </li>
-                    <li class="attribute">
-                        <h4 class="attribute-name box-title">Drift Rating</h4>
-                        <div class="attribute-value">
-                            <span class="ability-mod">{{data.attributes.drift}}</span>
+                            <input type="text" name="data.attributes.drift" value="{{data.attributes.drift}}"
+                                data-dtype="Number" placeholder="0" />
                         </div>
                     </li>
                 </ul>
             </div>
+
             <div class="flexcol">
-                <h3 class="form-header">Shields</h3>
-                <div class="form-group flexrow">
-                    <label>Total</label>
-                    <div class="form-fields multiple">
-                        <input type="text" name="data.attributes.shields.value"
-                            value="{{data.attributes.shields.value}}" data-dtype="Number" />
-                        <span class="sep"> / </span>
-                        <span>{{data.attributes.shields.max}}</span>
-                    </div>
-                </div>
+                <h3 class="form-header">Slots</h3>
                 <ul class="attributes flexrow">
                     <li class="attribute">
-                        <h4 class="attribute-name box-title">Forward</h4>
+                        <h4 class="attribute-name box-title">High</h4>
                         <div class="attribute-value multiple">
-                            <input type="text" name="data.attributes.shields.forward.value"
-                                value="{{data.attributes.shields.forward.value}}" data-dtype="Number"
-                                title="Forward Shields" />
+                            <input type="text" name="data.attributes.highSlots.value"
+                                value="{{data.attributes.highSlots.value}}" data-dtype="Number"/>
                             <span class="sep"> / </span>
-                            <span>{{data.attributes.shields.forward.max}}</span>
+                            <input type="text" name="data.attributes.highSlots.max"
+                                value="{{data.attributes.highSlots.max}}" data-dtype="Number"/>
                         </div>
                     </li>
                     <li class="attribute">
-                        <h4 class="attribute-name box-title">Starboard</h4>
+                        <h4 class="attribute-name box-title">Medium</h4>
                         <div class="attribute-value multiple">
-                            <input type="text" name="data.attributes.shields.starboard.value"
-                                value="{{data.attributes.shields.starboard.value}}" data-dtype="Number"
-                                title="Forward Shields" />
+                            <input type="text" name="data.attributes.midSlots.value"
+                                value="{{data.attributes.midSlots.value}}" data-dtype="Number"/>
                             <span class="sep"> / </span>
-                            <span>{{data.attributes.shields.starboard.max}}</span>
+                            <input type="text" name="data.attributes.midSlots.max"
+                                value="{{data.attributes.midSlots.max}}" data-dtype="Number"/>
                         </div>
                     </li>
                     <li class="attribute">
-                        <h4 class="attribute-name box-title">Aft</h4>
+                        <h4 class="attribute-name box-title">Low</h4>
                         <div class="attribute-value multiple">
-                            <input type="text" name="data.attributes.shields.aft.value"
-                                value="{{data.attributes.shields.aft.value}}" data-dtype="Number"
-                                title="Forward Shields" />
+                            <input type="text" name="data.attributes.lowSlots.value"
+                                value="{{data.attributes.lowSlots.value}}" data-dtype="Number"/>
                             <span class="sep"> / </span>
-                            <span>{{data.attributes.shields.aft.max}}</span>
+                            <input type="text" name="data.attributes.lowSlots.max"
+                                value="{{data.attributes.lowSlots.max}}" data-dtype="Number"/>
                         </div>
                     </li>
                     <li class="attribute">
-                        <h4 class="attribute-name box-title">Port</h4>
+                        <h4 class="attribute-name box-title">Internal</h4>
                         <div class="attribute-value multiple">
-                            <input type="text" name="data.attributes.shields.port.value"
-                                value="{{data.attributes.shields.port.value}}" data-dtype="Number"
-                                title="Forward Shields" />
+                            <input type="text" name="data.attributes.expansionBays.value"
+                                value="{{data.attributes.expansionBays.value}}" data-dtype="Number"/>
                             <span class="sep"> / </span>
-                            <span>{{data.attributes.shields.port.max}}</span>
+                            <input type="text" name="data.attributes.expansionBays.max"
+                                value="{{data.attributes.expansionBays.max}}" data-dtype="Number"/>
                         </div>
                     </li>
                 </ul>
@@ -212,28 +204,6 @@
                 <h3 class="form-header">Systems</h3>
                 <div class="flexrow">
                     <div class="flexcol">
-                        <div class="form-group">
-                            <label for="data.details.systems.powercore">Power Core</label>
-                            <select name="data.details.systems.powercore">
-                                {{#select data.details.systems.powercore}}
-                                <option value="">None</option>
-                                {{#each config.powerCoreSystems as |system s|}}
-                                <option value="{{s}}">{{system}}</option>
-                                {{/each}}
-                                {{/select}}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="data.details.systems.thrusters">Thrusters</label>
-                            <select name="data.details.systems.thrusters">
-                                {{#select data.details.systems.thrusters}}
-                                <option value="">None</option>
-                                {{#each config.thrusterSystems as |system s|}}
-                                <option value="{{s}}">{{system}}</option>
-                                {{/each}}
-                                {{/select}}
-                            </select>
-                        </div>
                         <div class="form-group">
                             <label for="data.details.systems.armor">Armor</label>
                             <select name="data.details.systems.armor">
@@ -257,17 +227,6 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="data.details.systems.quarters">Crew Quarters</label>
-                            <select name="data.details.systems.quarters">
-                                {{#select data.details.systems.quarters}}
-                                <option value="">None</option>
-                                {{#each config.crewQuarterSystems as |system s|}}
-                                <option value="{{s}}">{{system}}</option>
-                                {{/each}}
-                                {{/select}}
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="data.details.systems.defense">Defensive Countermeasures</label>
                             <select name="data.details.systems.defense">
                                 {{#select data.details.systems.defense}}
@@ -281,17 +240,6 @@
                     </div>
                     <div class="flexcol">
                         <div class="form-group">
-                            <label for="data.details.systems.driftEngine">Drift Engine</label>
-                            <select name="data.details.systems.driftEngine">
-                                {{#select data.details.systems.driftEngine}}
-                                <option value="">None</option>
-                                {{#each config.driftEngineSystems as |system s|}}
-                                <option value="{{s}}">{{system}}</option>
-                                {{/each}}
-                                {{/select}}
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="data.details.systems.sensors">Sensors</label>
                             <select name="data.details.systems.sensors">
                                 {{#select data.details.systems.sensors}}
@@ -303,15 +251,31 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="data.details.systems.shields">Shields</label>
-                            <select name="data.details.systems.shields">
-                                {{#select data.details.systems.shields}}
-                                <option value="">None</option>
-                                {{#each config.shieldSystems as |system s|}}
-                                <option value="{{s}}">{{system}}</option>
+                            <label for="data.details.systems.high">High Slots</label>
+                            <ul class="traits-list">
+                                {{#each data.details.systems.high.selected as |v k|}}
+                                <li class="tag {{k}}">{{v}}</li>
                                 {{/each}}
-                                {{/select}}
-                            </select>
+                            </ul>
+                            <a class="trait-selector" data-options="highSlotSystems"><i class="fas fa-edit"></i></a>
+                        </div>
+                        <div class="form-group">
+                            <label for="data.details.systems.mid">Medium Slots</label>
+                            <ul class="traits-list">
+                                {{#each data.details.systems.mid.selected as |v k|}}
+                                <li class="tag {{k}}">{{v}}</li>
+                                {{/each}}
+                            </ul>
+                            <a class="trait-selector" data-options="midSlotSystems"><i class="fas fa-edit"></i></a>
+                        </div>
+                        <div class="form-group">
+                            <label for="data.details.systems.low">Low Slots</label>
+                            <ul class="traits-list">
+                                {{#each data.details.systems.low.selected as |v k|}}
+                                <li class="tag {{k}}">{{v}}</li>
+                                {{/each}}
+                            </ul>
+                            <a class="trait-selector" data-options="lowSlotSystems"><i class="fas fa-edit"></i></a>
                         </div>
                         <div class="form-group">
                             <label for="data.details.systems.bays">Expansion Bays</label>

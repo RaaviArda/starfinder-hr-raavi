@@ -1,9 +1,9 @@
 {
     "name": "starfinder",
-    "title": "Starfinder",
+    "title": "Starfinder Houserules Raavi",
     "description": "A game system for running Starfinder in the Foundry VTT environment.",
     "version": "0.2.5",
-    "author": "wildj79",
+    "author": "wildj79 + Raavi Arda",
     "templateVersion": 2,
     "scripts": [],
     "esmodules": ["starfinder.js"],
@@ -57,11 +57,6 @@
             "lang": "en",
             "name": "English",
             "path": "lang/en.json"
-        },
-        {
-            "lang": "ja",
-            "name": "日本語",
-            "path": "lang/js.json"
         }
     ],
     "socket": true,
@@ -72,7 +67,7 @@
     "secondaryTokenAttribute": "attributes.sp",
     "minimumCoreVersion": "0.5.6",
     "compatibleCoreVersion": "0.6.0",
-    "url": "https://github.com/wildj79/foundryvtt-starfinder",
-    "manifest": "https://raw.githubusercontent.com/wildj79/foundryvtt-starfinder/master/src/system.json",
-    "download": "https://github.com/wildj79/foundryvtt-starfinder/releases/download/v0.2.5/starfinder-v0.2.5.zip"
+    "url": "https://github.com/RaaviArda/starfinder-hr-raavi",
+    "manifest": "https://raw.githubusercontent.com/RaaviArda/starfinder-hr-raavi/master/src/system.json",
+    "download": "https://github.com/RaaviArda/starfinder-hr-raavi/archive/v0.2.4b.zip"
 }
